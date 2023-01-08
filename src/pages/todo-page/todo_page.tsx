@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoModal from "./components/todo-modal/todo_modal";
 
 export type TodoType = {
   id: number;
@@ -7,6 +8,10 @@ export type TodoType = {
 };
 
 function TodoPage() {
+  console.log('TODO PAGE RENDER')
+
+const [showTodo, setShowTodo]=useState<boolean>(false)
+
   // let myNumberList: number[]=[1,2,3]
   // let myTodoList:TodoType[]=[]
 
@@ -27,9 +32,24 @@ function TodoPage() {
   ]);
 
   return (
+    <>
+    <TodoModal onClose={()=>{
+      console.log('TODO PAGE ONCLOSE()')
+      setShowTodo(false)
+
+    }} show={showTodo} />
+
     <div>
       <div className="row">
         <div className="col-12">
+          <button className="btn btn-primary"
+          onClick={()=>{
+            setShowTodo(true)
+
+          }}
+          > New TODO
+
+          </button>
           <table className="table table-stripped table-hover">
             <thead>
               <tr>
@@ -57,6 +77,7 @@ function TodoPage() {
 
 //component render olabilmesi icin yeni bir referans ile deger gönderilmesi gerekiyor
                           setTodoList([...todoList])
+                        // setTodoList(todoList.map(item=>item)) array distract yöntemiyle ayni özelliklerde
 
                                       // let user1 = {id:1, name:'test'}
                                       // let user2 = user1
@@ -85,6 +106,7 @@ function TodoPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 export default TodoPage;

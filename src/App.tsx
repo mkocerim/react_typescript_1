@@ -14,7 +14,9 @@ function App() {
 
 
   return (
-    <HashRouter>
+
+
+  <HashRouter>
     <div className="container mt-5">
 
     <Header/>
@@ -26,7 +28,7 @@ function App() {
 
     </Routes>
 
-
+    
       
     </div>
     </HashRouter>
