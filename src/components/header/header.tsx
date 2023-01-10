@@ -18,6 +18,7 @@ function Header() {
           >
             Counter
           </Link>
+
           <Link
             className="me-3 py-2 text-dark text-decoration-none"
             to="todo"
@@ -29,6 +30,12 @@ function Header() {
             to="jsonplaceholder"
           >
             jsonplaceholder
+          </Link>
+          <Link
+            className="me-3 py-2 text-dark text-decoration-none"
+            to="adoptez"
+          >
+            Adoptez
           </Link>
          
         </nav>
