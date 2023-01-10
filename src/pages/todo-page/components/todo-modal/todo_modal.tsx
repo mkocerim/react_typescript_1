@@ -4,6 +4,7 @@ import { TodoType } from "../../todo_page";
 export type TodoModalPropsType = {
   show: boolean;
   onClose: () => void;
+  onSave:(input: TodoType, foo: string, bar:number)=> void;
 };
 
 function TodoModal(props: TodoModalPropsType) {
@@ -13,6 +14,8 @@ function TodoModal(props: TodoModalPropsType) {
   const [inputId, setInputId] = useState<number>(0);
   const inputTodoRef = useRef<HTMLTextAreaElement>(null);
   const isDoneRef = useRef<HTMLInputElement>(null);
+  const formRef= useRef<HTMLFormElement>(null)
+
   // inputTodoRef.current
 
   const onClose = () => {
@@ -36,19 +39,22 @@ function TodoModal(props: TodoModalPropsType) {
       isDone:isDoneRef.current.checked
     
     }
+        console.log('>>>INPUT DATA FORM',inputFormData)
+    // console.log('>>>INPUT ID',inputId)
+    // console.log('>>>INPUT TODO REF',inputTodoRef.current.value)
+    // console.log('ISDONE REF CURRENT CHECKED',isDoneRef.current.checked)
+    // console.log('ISDONE REF CURRENT VALUE',isDoneRef.current.value)
 
-    console.log('>>>INPUT ID',inputId)
-    console.log('>>>INPUT TODO REF',inputTodoRef.current.value)
-    console.log('ISDONE REF CURRENT CHECKED',isDoneRef.current.checked)
-    console.log('ISDONE REF CURRENT VALUE',isDoneRef.current.value)
+      formRef.current?.reset()
 
+      props.onSave(inputFormData,'test',1)
   };
 
   return (
     <>
       {props.show ? <div className="modal-backdrop fade show"></div> : <></>}
 
-      <form onSubmit={onFormSubmit}>
+      <form ref={formRef} onSubmit={onFormSubmit}>
         <div
           // let dizi = ['foo','bar','baz']
           //dizi.join('-')--> "foo-bar-baz"
