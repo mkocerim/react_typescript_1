@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type Category={
     id:number,
@@ -28,25 +28,36 @@ const initialState:CategoryState={
     initialized: false
 
 }
-initialState.categories=[{
-    id:1,
-    parent_id:null,
-    name:'string',
-    slug:'string',
-    description:'string',
-    image:'string',
-    status:'string',
-    created_at:'string',
-    updated_at:'string',
-}]
+// initialState.categories=[{
+//     id:1,
+//     parent_id:null,
+//     name:'string',
+//     slug:'string',
+//     description:'string',
+//     image:'string',
+//     status:'string',
+//     created_at:'string',
+//     updated_at:'string',
+// }]
 
 
 
 
-createSlice({
+const categorySlice = createSlice({
     name:'categorySlice',
     initialState,
     reducers:{
+        setCategories:(state:CategoryState,action:PayloadAction<Category[]>)=>{
+            state.categories=action.payload
+            state.initialized=true
 
-    }
+        },
+        clearCategories:(state:CategoryState)=>{
+            state.categories=[]
+            state.initialized=false
+        }
+     }
 })
+
+export const {setCategories,clearCategories}=categorySlice.actions
+export default categorySlice.reducer
