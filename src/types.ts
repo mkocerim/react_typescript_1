@@ -1,4 +1,3 @@
-import { timeStamp } from "console"
 
 export type AdoptezResponseType<T=any>={
     data?:T,
@@ -57,6 +56,5 @@ export type  Service=ID & Timestamp & {
     currency:'EUR'|'USD'|'TRY'|'GBP',
     steps:any,
     status:'active'|'passive' 
-
 
 }
