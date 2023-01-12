@@ -1,16 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Category } from "../types";
 
-export type Category={
-    id:number,
-    parent_id:number|null,
-    name:string,
-    slug:string,
-    description:string,
-    image:string,
-    status:string,
-    created_at:string,
-    updated_at:string,
-}
+
 
 // const exampleCategory:Category={
 //     id:1,

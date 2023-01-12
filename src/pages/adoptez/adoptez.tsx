@@ -2,19 +2,12 @@ import { useSelector } from "react-redux/es/exports"
 import { RootState } from "../../redux/store"
 import useApi from "../../hooks/useApi"
 import { AxiosResponse } from "axios"
-import { Category, setCategories } from "../../redux/categorySlice"
+import { setCategories } from "../../redux/categorySlice"
 import { useDispatch } from "react-redux/es/hooks/useDispatch"
 import CategoryBox from "./components/category-box/categoryBox"
+import { AdoptezResponseType, Category } from "../../types"
 
-export type AdoptezResponseType<T=any>={
-    data?:T,
-    status:'success'|'error',
-    draw?:number,
-    recordsTotal?:number,
-    recordsFiltered?:number,
-    errorMessage?:string,
-    exceptionType?:string
-}
+
 
 function Adoptez(){
     const api= useApi("adoptez")
@@ -22,6 +15,7 @@ function Adoptez(){
 
     const categoryState = useSelector((state:RootState)=>{
         console.log("USESELECTOR STATE",state)
+
         return state.category
 
     })

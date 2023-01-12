@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Category } from "../../../../redux/categorySlice"
+import { Category } from "../../../../types"
 
 export type CategoryBoxPropsType={
 category:Category
@@ -19,9 +19,9 @@ function CategoryBox(props:CategoryBoxPropsType){
             <h1 className="card-title pricing-card-title">{props.category.status}</h1>
             <ul className="list-unstyled mt-3 mb-4">
               <li>{props.category.description}</li>
-              <li><img src={props.category.image} style={{width:'100%', height:'250px'}} /></li>
+              <li><img src={props.category.image ? props.category.image : 'https://api.adoptez1artisan.com/assets/images/no-image.png'} style={{width:'100%', height:'250px'}} /></li>
             </ul>
-            <Link to={"/adoptez/category-details/" + props.category.id} className="w-100 btn btn-lg btn-primary">Category Details</Link>
+            <Link to={"/adoptez/category-details/" + props.category.slug} className="w-100 btn btn-lg btn-primary">Category Details</Link>
           </div>
         </div>
       </div>

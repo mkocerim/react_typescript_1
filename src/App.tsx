@@ -5,6 +5,8 @@ import { HashRouter,Routes,Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header";
 import Adoptez from "./pages/adoptez/adoptez";
+import CategoryDetailsPage from "./pages/adoptez/category-details-page";
+import CategoryDetails from "./pages/adoptez/category-details-page";
 import CounterPage from "./pages/counter-page/counter_page";
 import Jsonplaceholder from "./pages/json-place-holder/json_place_holder";
 import JsonplaceholderUser from "./pages/json-place-holder/json_place_holder _user";
@@ -30,6 +32,7 @@ function App() {
       <Route path= {"jsonplaceholder"} element={<Jsonplaceholder/>}/>
       <Route path= {"jsonplaceholder/user/:userId"} element={<JsonplaceholderUser/>}/>
       <Route path= {"adoptez"} element={<Adoptez/>}/>
+      <Route path= {"adoptez/category-details/:category_slug"} element={<CategoryDetailsPage/>}/>
 
 
 
